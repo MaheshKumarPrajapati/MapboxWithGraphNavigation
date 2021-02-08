@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context="fragments.FirstFragment">
+
+
+    <Button
+        android:id="@+id/button_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+         />
+    <Button
+        android:id="@+id/button_supportMapBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/map_support_mapbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_first"
+         />
+    <Button
+        android:id="@+id/button_map_point"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/map_with_points"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_supportMapBox" />
+    <Button
+        android:id="@+id/button_map_polyline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/map_with_polyline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_map_point" />
+    <Button
+        android:id="@+id/button_map_polygons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/map_with_polygons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_map_polyline" />
+    <Button
+        android:id="@+id/show_hide_map_layers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/map_with_polygons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_map_polygons" />
+</androidx.constraintlayout.widget.ConstraintLayout>

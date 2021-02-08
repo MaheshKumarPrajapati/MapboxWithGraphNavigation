@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.infozity.mopboxexamples.fragments.MainFragment"
+        android:label="@string/first_fragment_label"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_MapWithPointFragment"
+            app:destination="@id/MapWithPointsFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_SupportMapBoxFragment"
+            app:destination="@id/supportMapBoxFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_MapWithPolyline"
+            app:destination="@id/MapWithPolylineFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_MapWithPolygons"
+            app:destination="@id/MapWithPolygonFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_ShowAndHideLayers"
+            app:destination="@id/ShowAndHideLayersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SecondFragment"
+        android:name="com.infozity.mopboxexamples.fragments.SimpleMapFragment"
+        android:label="@string/second_fragment_label"
+        tools:layout="@layout/fragment_simple_map">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/supportMapBoxFragment"
+        android:name="com.infozity.mopboxexamples.fragments.SupportMapBoxFragment"
+        android:label="@string/map_support_mapbox"
+        tools:layout="@layout/fragment_support_map">
+        <action
+            android:id="@+id/action_SupportMapBoxFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/action_SupportMapBoxFragment_to_SimpleMapFragment"
+            app:destination="@id/SecondFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/MapWithPointsFragment"
+        android:name="com.infozity.mopboxexamples.fragments.MapWiithPoints"
+        android:label="@string/map_with_points"
+        tools:layout="@layout/fragment_simple_map">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/MapWithPolylineFragment"
+        android:name="com.infozity.mopboxexamples.fragments.MapWithPolyline"
+        android:label="@string/map_with_polyline"
+        tools:layout="@layout/fragment_mapwith_polyline">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/MapWithPolygonFragment"
+        android:name="com.infozity.mopboxexamples.fragments.MapWithPolygons"
+        android:label="@string/map_with_polygons"
+        tools:layout="@layout/fragment_mapwith_polygons">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ShowAndHideLayersFragment"
+        android:name="com.infozity.mopboxexamples.fragments.ShowAndHideLayers"
+        android:label="@string/show_hide_layers"
+        tools:layout="@layout/show_hide_layers">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+</navigation>

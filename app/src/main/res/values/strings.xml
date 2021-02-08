@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="map_box_key"> Enter your map box key </string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Simple Map Screen</string>
+    <string name="map_with_polyline">Map with Polyline</string>
+    <string name="map_with_polygons">Map with Polygons</string>
+    <string name="show_hide_layers">Show and hide layers</string>
+    <string name="map_support_mapbox">SupportMapBoxFragment</string>
+    <string name="map_with_points">Map with Points</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>

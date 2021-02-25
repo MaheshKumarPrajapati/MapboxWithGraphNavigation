@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id "kotlin-android-extensions"
     id "kotlin-kapt"
+    id "com.google.gms.google-services"
 }
 
 ext {
@@ -31,7 +32,7 @@ android {
     buildToolsVersion "30.0.2"
 
     defaultConfig {
-        applicationId "com.infozity.mopboxexamples"
+        applicationId "com.mahesh_prajapati.mopboxexamples"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -69,4 +70,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation "com.mapbox.mapboxsdk:mapbox-android-sdk:$mapboxVersion"
+
+    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 }

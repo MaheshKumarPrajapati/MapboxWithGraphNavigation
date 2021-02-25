@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="com.infozity.mopboxexamples.fragments.MainFragment"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.MainFragment"
         android:label="@string/first_fragment_label"
         tools:layout="@layout/fragment_main">
         <action
@@ -28,10 +28,19 @@
         <action
             android:id="@+id/action_FirstFragment_to_ShowAndHideLayers"
             app:destination="@id/ShowAndHideLayersFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_FragmentLayerClick"
+            app:destination="@id/fragment_layer_click" />
+        <action
+            android:id="@+id/action_FirstFragment_to_LocationPicker"
+            app:destination="@id/fragment_add_points" />
+        <action
+            android:id="@+id/action_FirstFragment_to_MultipleGeometry"
+            app:destination="@id/fragment_multiple_geometry" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="com.infozity.mopboxexamples.fragments.SimpleMapFragment"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.SimpleMapFragment"
         android:label="@string/second_fragment_label"
         tools:layout="@layout/fragment_simple_map">
 
@@ -41,7 +50,7 @@
     </fragment>
     <fragment
         android:id="@+id/supportMapBoxFragment"
-        android:name="com.infozity.mopboxexamples.fragments.SupportMapBoxFragment"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.SupportMapBoxFragment"
         android:label="@string/map_support_mapbox"
         tools:layout="@layout/fragment_support_map">
         <action
@@ -53,7 +62,7 @@
     </fragment>
     <fragment
         android:id="@+id/MapWithPointsFragment"
-        android:name="com.infozity.mopboxexamples.fragments.MapWiithPoints"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.MapWiithPoints"
         android:label="@string/map_with_points"
         tools:layout="@layout/fragment_simple_map">
 
@@ -63,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/MapWithPolylineFragment"
-        android:name="com.infozity.mopboxexamples.fragments.MapWithPolyline"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.MapWithPolyline"
         android:label="@string/map_with_polyline"
         tools:layout="@layout/fragment_mapwith_polyline">
 
@@ -73,7 +82,7 @@
     </fragment>
     <fragment
         android:id="@+id/MapWithPolygonFragment"
-        android:name="com.infozity.mopboxexamples.fragments.MapWithPolygons"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.MapWithPolygons"
         android:label="@string/map_with_polygons"
         tools:layout="@layout/fragment_mapwith_polygons">
 
@@ -83,12 +92,39 @@
     </fragment>
     <fragment
         android:id="@+id/ShowAndHideLayersFragment"
-        android:name="com.infozity.mopboxexamples.fragments.ShowAndHideLayers"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.ShowAndHideLayers"
         android:label="@string/show_hide_layers"
         tools:layout="@layout/show_hide_layers">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_layer_click"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.FragmentLayerClick"
+        android:label="@string/layer_click"
+        tools:layout="@layout/fragment_layer_click">
+        <action
+            android:id="@+id/action_back_FragmentLayerClick_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_add_points"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.AddPointFragment"
+        android:label="@string/add_points"
+        tools:layout="@layout/fragment_add_points">
+        <action
+            android:id="@+id/action_back_AddPoints_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_multiple_geometry"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.FragmentMultipleGeometry"
+        android:label="@string/show_multiple_geometries"
+        tools:layout="@layout/fragment_multiple_geometry">
+        <action
+            android:id="@+id/action_back_MultipleGeometry_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

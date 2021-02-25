@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp"
-    tools:context="fragments.FirstFragment">
+    android:padding="10dp">
 
 
     <Button
@@ -54,8 +52,32 @@
         android:id="@+id/show_hide_map_layers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/map_with_polygons"
+        android:text="@string/show_hide_layers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_map_polygons" />
+    <Button
+        android:id="@+id/click_layers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/layer_click"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/show_hide_map_layers" />
+    <Button
+        android:id="@+id/show_multiple_geometrie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/show_multiple_geometries"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/click_layers" />
+    <Button
+        android:id="@+id/location_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_points"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/show_multiple_geometrie" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.infozity.mopboxexamples.fragments
+package com.mahesh_prajapati.mopboxexamples.fragments
 
 import android.graphics.Color
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.infozity.mopboxexamples.R
+import com.mahesh_prajapati.mopboxexamples.R
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.LineString
 import com.mapbox.geojson.Point
@@ -27,13 +27,15 @@ import kotlinx.android.synthetic.main.fragment_simple_map.view.*
 class MapWithPolygons: Fragment() , OnMapReadyCallback {
     var BLUE_COLOR = Color.parseColor("#3bb2d0")
     var RED_COLOR = Color.parseColor("#AF0000")
+    private var rootView: View? = null
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
         Mapbox.getInstance(activity!!, getString(R.string.map_box_key));
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mapwith_polygons, container, false)
+        rootView=inflater.inflate(R.layout.fragment_mapwith_polygons, container, false)
+        return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -111,4 +113,39 @@ class MapWithPolygons: Fragment() , OnMapReadyCallback {
         }
     }
 
+    // Add the mapView lifecycle to the activity's lifecycle methods
+    public override fun onResume() {
+        super.onResume()
+        rootView!!.mapView.onResume()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        rootView!!.mapView.onStart()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        rootView!!.mapView.onStop()
+    }
+
+    public override fun onPause() {
+        super.onPause()
+        rootView!!.mapView.onPause()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        rootView!!.mapView.onLowMemory()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        rootView!!.mapView.onDestroy()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        rootView!!.mapView.onSaveInstanceState(outState)
+    }
 }

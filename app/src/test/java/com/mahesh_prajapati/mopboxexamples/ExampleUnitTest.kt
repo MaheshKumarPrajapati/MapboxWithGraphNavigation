@@ -1,4 +1,4 @@
-package com.infozity.mopboxexamples
+package com.mahesh_prajapati.mopboxexamples
 
 import org.junit.Test
 

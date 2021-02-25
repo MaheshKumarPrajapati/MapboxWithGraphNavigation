@@ -1,4 +1,4 @@
-package com.infozity.mopboxexamples.fragments
+package com.mahesh_prajapati.mopboxexamples.fragments
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.infozity.mopboxexamples.R
+import com.mahesh_prajapati.mopboxexamples.R
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.mapboxsdk.Mapbox

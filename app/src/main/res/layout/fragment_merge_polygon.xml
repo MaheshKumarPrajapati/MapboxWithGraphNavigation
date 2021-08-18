@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:mapbox="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        mapbox:mapbox_cameraTargetLat="55.67860"
+        mapbox:mapbox_cameraTargetLng="12.56670"
+        mapbox:mapbox_cameraZoom="5" />
+
+
+    <Button
+        android:id="@+id/undo_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:drawableTop="@drawable/ic_undo"
+        android:drawableTint="@color/white"
+        android:layout_marginLeft="16dp"
+        android:background="@color/purple_500"
+        android:text="Un do"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/clear_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="16dp"
+        android:drawableTint="@color/white"
+        android:drawableTop="@drawable/ic_delete"
+        android:background="@color/purple_500"
+        android:text="Clear"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/done_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="16dp"
+        android:drawableTint="@color/white"
+        android:layout_marginEnd="16dp"
+        android:drawableTop="@drawable/ic_done"
+        android:layout_marginRight="16dp"
+        android:background="@color/purple_500"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+
+
+
+
+    <ImageView
+        android:id="@+id/drop_pin_button"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_crosshair" />
+
+    <Button
+        android:id="@+id/merge_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:drawableTop="@drawable/ic_merge"
+        android:drawableTint="@color/white"
+        android:visibility="gone"
+        android:background="@color/purple_500"
+        android:text="Merge"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+
+</FrameLayout>

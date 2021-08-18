@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mahesh_prajapati.mopboxexamples.R
@@ -23,11 +24,12 @@ import com.mapbox.mapboxsdk.style.layers.FillLayer
 import com.mapbox.mapboxsdk.style.layers.LineLayer
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
-import kotlinx.android.synthetic.main.fragment_add_points.view.*
+import kotlinx.android.synthetic.main.fragment_create_polygon.view.*
+
 import java.util.*
 
 
-class AddPointFragment : Fragment() , OnMapReadyCallback{
+class PolygonCreaterFragment : Fragment() , OnMapReadyCallback{
     private val CIRCLE_SOURCE_ID = "circle-source-id"
     private val FILL_SOURCE_ID = "fill-source-id"
     private val LINE_SOURCE_ID = "line-source-id"
@@ -53,7 +55,7 @@ class AddPointFragment : Fragment() , OnMapReadyCallback{
         savedInstanceState: Bundle?
     ): View? {
         Mapbox.getInstance(activity!!, getString(R.string.map_box_key))
-        rootView=inflater.inflate(R.layout.fragment_add_points, container, false)
+        rootView=inflater.inflate(R.layout.fragment_create_polygon, container, false)
         // Inflate the layout for this fragment
         return rootView
     }
@@ -69,7 +71,7 @@ class AddPointFragment : Fragment() , OnMapReadyCallback{
     override fun onMapReady(mapboxMap: MapboxMap) {
         this.mapboxMap = mapboxMap
 
-        mapboxMap.setStyle(Style.SATELLITE) { style ->
+        mapboxMap.setStyle(Style.MAPBOX_STREETS) { style ->
             mapboxMap.animateCamera(
                 CameraUpdateFactory.newCameraPosition(
                     CameraPosition.Builder()
@@ -97,8 +99,10 @@ class AddPointFragment : Fragment() , OnMapReadyCallback{
      */
     private fun initFloatingActionButtonClickListeners() {
         val clearBoundariesFab: Button = rootView!!.findViewById(R.id.clear_button)
+        val undoBoundariesFab: Button = rootView!!.findViewById(R.id.undo_button)
         clearBoundariesFab.setOnClickListener(View.OnClickListener { clearEntireMap() })
-        val dropPinFab: FloatingActionButton = rootView!!.findViewById(R.id.drop_pin_button)
+        undoBoundariesFab.setOnClickListener(View.OnClickListener { undoLastEntryMap() })
+        val dropPinFab: ImageView = rootView!!.findViewById(R.id.drop_pin_button)
         dropPinFab.setOnClickListener(View.OnClickListener { // Use the map click location to create a Point object
             val mapTargetPoint = Point.fromLngLat(
                 mapboxMap!!.cameraPosition.target.longitude,
@@ -162,9 +166,64 @@ class AddPointFragment : Fragment() , OnMapReadyCallback{
         })
     }
 
+    private fun undoLastEntryMap() {
+        if(circleLayerFeatureList.size<=1 || lineLayerPointList.size<=1 ||
+            fillLayerPointList.size<=1) {
+            firstPointOfPolygon= null
+            clearEntireMap()
+        }else {
+            circleLayerFeatureList.removeAt(circleLayerFeatureList.size-1)
+            if (circleSource != null) {
+                circleSource!!.setGeoJson(FeatureCollection.fromFeatures(circleLayerFeatureList))
+            }
+
+
+            if (circleLayerFeatureList.size < 3) {
+                lineLayerPointList.removeAt(lineLayerPointList.size -1)
+            } else if (circleLayerFeatureList.size == 3) {
+                lineLayerPointList.removeAt(lineLayerPointList.size -2)
+            } else {
+                lineLayerPointList.removeAt(lineLayerPointList.size -2)
+            }
+            if (lineSource != null) {
+                lineSource!!.setGeoJson(
+                    FeatureCollection.fromFeatures(
+                        arrayOf(
+                            Feature.fromGeometry(
+                                LineString.fromLngLats(lineLayerPointList)
+                            )
+                        )
+                    )
+                )
+            }
+
+            // Add the click point to the fill layer and update the display of the fill layer data
+            fillLayerPointList.clear()
+            if(listOfList!=null){
+                listOfList!!.clear()
+            }
+
+            if (fillSource != null) {
+                fillSource!!.setGeoJson(FeatureCollection.fromFeatures(arrayOf<Feature>()))
+            }
+
+           fillLayerPointList.addAll(lineLayerPointList)
+            listOfList = ArrayList()
+            listOfList!!.add(fillLayerPointList)
+            val finalFeatureList: ArrayList<Feature> = ArrayList()
+            finalFeatureList.add(Feature.fromGeometry(Polygon.fromLngLats(listOfList!! as List<MutableList<Point>>)))
+            val newFeatureCollection: FeatureCollection =
+                FeatureCollection.fromFeatures(finalFeatureList)
+            if (fillSource != null) {
+                fillSource!!.setGeoJson(newFeatureCollection)
+            }
+        }
+    }
+
     /**
      * Remove the drawn area from the map by resetting the FeatureCollections used by the layers' sources
      */
+
     private fun clearEntireMap() {
         fillLayerPointList = ArrayList()
         circleLayerFeatureList = ArrayList()
@@ -202,7 +261,7 @@ class AddPointFragment : Fragment() , OnMapReadyCallback{
         )
         circleLayer.setProperties(
             circleRadius(7f),
-            circleColor(Color.parseColor("#d004d3"))
+            circleColor(Color.RED)
         )
         loadedMapStyle.addLayer(circleLayer)
     }
@@ -253,7 +312,7 @@ class AddPointFragment : Fragment() , OnMapReadyCallback{
             LINE_SOURCE_ID
         )
         lineLayer.setProperties(
-            lineColor(Color.WHITE),
+            lineColor(Color.BLUE),
             lineWidth(5f)
         )
         loadedMapStyle.addLayerBelow(lineLayer, CIRCLE_LAYER_ID)

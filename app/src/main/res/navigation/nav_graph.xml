@@ -37,6 +37,15 @@
         <action
             android:id="@+id/action_FirstFragment_to_MultipleGeometry"
             app:destination="@id/fragment_multiple_geometry" />
+      <action
+            android:id="@+id/action_FirstFragment_to_CreatePoint"
+            app:destination="@id/fragment_create_point" />
+        <action
+            android:id="@+id/action_FirstFragment_to_CreatePolyline"
+            app:destination="@id/fragment_create_polyline" />
+        <action
+            android:id="@+id/action_FirstFragment_to_MergePolygon"
+            app:destination="@id/fragment_merge_polygon" />
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -111,11 +120,38 @@
     </fragment>
     <fragment
         android:id="@+id/fragment_add_points"
-        android:name="com.mahesh_prajapati.mopboxexamples.fragments.AddPointFragment"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.PolygonCreaterFragment"
         android:label="@string/add_points"
-        tools:layout="@layout/fragment_add_points">
+        tools:layout="@layout/fragment_create_polygon">
         <action
             android:id="@+id/action_back_AddPoints_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_create_point"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.PointCreaterFragment"
+        android:label="@string/create_a_point"
+        tools:layout="@layout/fragment_point_picker">
+        <action
+            android:id="@+id/action_back_MultipleGeometry_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_create_polyline"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.PolylineCreaterFragment"
+        android:label="@string/create_a_polyline"
+        tools:layout="@layout/fragment_create_polyline">
+        <action
+            android:id="@+id/action_back_MultipleGeometry_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_merge_polygon"
+        android:name="com.mahesh_prajapati.mopboxexamples.fragments.MergePolygonFragment"
+        android:label="@string/merge_polygons"
+        tools:layout="@layout/fragment_merge_polygon">
+        <action
+            android:id="@+id/action_back_MultipleGeometry_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
     <fragment

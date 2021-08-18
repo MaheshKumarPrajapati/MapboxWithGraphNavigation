@@ -309,7 +309,7 @@ public abstract class BaseActivity extends AppCompatActivity implements  GoogleA
         permissionUtils=new PermissionUtils(BaseActivity.this);
         permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
         permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
-        permissions.add(Manifest.permission.READ_PHONE_STATE);
+       // permissions.add(Manifest.permission.READ_PHONE_STATE);
         permissionUtils.check_permission(permissions,"Please allow location permission",1);
     }
 

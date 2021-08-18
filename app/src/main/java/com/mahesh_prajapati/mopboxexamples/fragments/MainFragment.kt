@@ -52,5 +52,14 @@ class MainFragment : Fragment() {
         show_multiple_geometrie.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_MultipleGeometry)
         }
+        create_point.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_CreatePoint)
+        }
+        create_polyline.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_CreatePolyline)
+        }
+        merge_polygons.setOnClickListener {
+            findNavController().navigate(R.id.action_FirstFragment_to_MergePolygon)
+        }
     }
 }
